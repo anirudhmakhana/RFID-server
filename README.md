@@ -8,7 +8,7 @@ Note: this project is still in early development stages.
 
 **Contents:**
 
-- `rfid-adapter`: (python) covers the stack from the serial port hardware interface to running an external adapter server through flask. Lots going on here. All good stuff.
+- `rfid-interface`: (python) covers the stack from the serial port hardware interface to running an external adapter server through flask. Lots going on here. All good stuff.
 - `contracts`: (solidity) ethereum contracts that contain the main business logic for the peer to peer library. `Library.sol` is the main contract here - connects to external adapter through chainlink node and holds the state of all entries (books) in the system. 
 - `frontend`: (HTML/JS) frontend web3 app to interface with the smart contracts.
 
