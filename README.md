@@ -2,7 +2,7 @@
 
 A peer to peer library powered by smart contracts and chainlink enabled RFID hardware.
 
-EMBED DEMO VIDEO HERE
+[![](http://img.youtube.com/vi/1nnmgthdPqw/0.jpg)](http://www.youtube.com/watch?v=1nnmgthdPqw "Demo")
 
 Note: this project is still in early development stages.
 
