@@ -19,7 +19,7 @@ Note: this project is still in early development stages.
 cd rfid-adapter
 ./server.sh
 ```
-This will expose the RFID external adapter server at https://link-adapter.loca.lt (if the URL is available). 
+This will expose the RFID external adapter server at  https://p2plib-adapter.loca.lt (if the URL is available). 
 
 A node operator will need to add this job in order for the contract to work (and the contract oracle address and job id also have to be updated).
 
@@ -36,7 +36,7 @@ Depending on how the external adapter was deployed, the  oracle addresses and jo
 cd frontend
 ./server.sh
 ```
-This will start an http server at https://p2p-library.loca.lt (if URL is available). 
+This will start an http server at https://link-library.loca.lt (if URL is available). 
 
 #### Things that can go wrong:
 
