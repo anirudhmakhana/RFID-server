@@ -28,7 +28,7 @@ class RFID:
 			print("FOUND ARDUINO INTERFACE AT " + arduino_name)
 		except:
 			print("ERROR: arduino not detected")
-			raise TypeError
+			#raise TypeError
 		# connect to arduino
 		self.ser = serial.Serial('/dev/'+arduino_name, timeout = self.timeout)
 

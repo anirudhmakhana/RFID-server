@@ -3,4 +3,4 @@
 curl --header "Content-Type: application/json" \
 	--request POST \
 	--data '{"id":"278c97ffadb54a5bbb93cfec5f7b5503", "data":{"timeout": 10}}' \
-    http://206.189.174.196/
+    http://localhost:1337/
