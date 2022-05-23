@@ -1,21 +1,30 @@
 from rfid import RFID
 import random
+import string
+VIRTUAL_UIDS = ["F6F8622E", "DEADBEEF", "12345678", "TEST123", "APPLEONE"]
+def generateRandomUID():
+    var2 = random.choice(string.ascii_letters)
+    N=6
+    result = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N))
+    VIRTUAL_UIDS.append(result)
+    return result
 
-class Adapter:
+class VirtualAdapter:
     DEFAULT_TIMEOUT = 20
+    VIRTUAL = False  # flag to set when not using a real hardware backend
+
 
     def __init__(self, input):
         # input is JSON that comes with POST request
         self.request_data = input.get('data')
         self.set_timeout()
         # sets the rfid interface
-        self.rfid = RFID(self.timeout)
+        # self.rfid = RFID(self.timeout)
         self.id = input.get('id', '1')
         if self.id is None:
             self.result_error("No id provided")
         else:
             self.request_scan()
-        
 
     def set_timeout(self):
         # try to get the timeout param
@@ -28,16 +37,8 @@ class Adapter:
         self.timeout = self.DEFAULT_TIMEOUT
 
     def request_scan(self):
-        try:
-            # runs the rfid scanner
-            res = self.rfid.run_scanner()
-            if res:
-                # means there was a scan
-                self.result_success({"uid": res})
-            else:
-                self.result_timeout()
-        except:
-            res = self.result_error('No scanner found')
+        self.result_success({"uid": generateRandomUID()})
+
 
     """
     Status code key:
@@ -68,12 +69,11 @@ class Adapter:
             'status': 'errored',
             'statusCode': 400,
         }
-        # self.result = {
-        #     'jobRunID': self.id,
-        #     'data': {
-        #         "uid": "F6F8B4F8"
-        #     },
-        #     'status': 'success',
-        #     'statusCode': 200,
-        # }
-
+        self.result = {
+            'jobRunID': self.id,
+            'data': {
+                "uid": "F6F8B4F8"
+            },
+            'status': 'success',
+            'statusCode': 200,
+        }

@@ -1,6 +1,7 @@
-import os
+
 import time
 import serial
+import serial.tools.list_ports
 
 class RFID:
 	def __init__(self, timeout):
@@ -16,21 +17,8 @@ class RFID:
 		Will find arduino USB interface, and init a serial interface.
 		"""
 		# finds the port that the arduino is on
-		prefix="tty.usbmodem" # device name will always start with this
-		arduino_name = None # placeholder for error checkings
-		devs = os.listdir("/dev")
-		for d in devs:
-			if d[:len(prefix)] == prefix:
-				arduino_name = d
-				break
-		# TODO: fix this error checking
-		try:
-			print("FOUND ARDUINO INTERFACE AT " + arduino_name)
-		except:
-			print("ERROR: arduino not detected")
-			#raise TypeError
 		# connect to arduino
-		self.ser = serial.Serial('/dev/'+arduino_name, timeout = self.timeout)
+		self.ser = serial.Serial('COM3', 9800, timeout = self.timeout)
 
 	def run_scanner(self):
 		"""
